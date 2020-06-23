@@ -88,7 +88,7 @@ messenger.setPersistentMenu({pageId:'fbid', menuItems:data})
 	 	case "MY_CUSTOM_PAYLOAD":
 		sendTypingOn(sender)
 		//get the user name
-		let url = "https://graph.facebook.com/"+sender+"?fields=first_name,last_name,profile_pic&access_token=EAAHhwJo945kBAMjJ0IvMMJ7GL7jjehPoYsiZAOCrDzSKNJKM0ikZBlbZBPIZCaxZBrzBBv9LZBO46OxYRqMs89ba8zVxpUazJtydqCxOSsIWq1OvP2474taxAqmji5DUz8kucZBwGQHZAYYlS2OV7iG4ldI19w6zhooXMJXZA864PGQZDZD";
+		let url = "https://graph.facebook.com/"+sender+"?fields=first_name,last_name,profile_pic&access_token=token";
 
 https.get(url,(res) => {
     let body = "";
@@ -121,7 +121,7 @@ https.get(url,(res) => {
 
 	 		break;
 			case "Emission":
-			messenger.setPersistentMenu({pageId:'fid', menuItems:data})
+			
        sendGenericEmission_1(sender)
        sendGenericEmission_2(sender)
        sendGenericEmission_3(sender)
@@ -179,7 +179,7 @@ function decideMessage(sender,text1) {
 
 } else{
 		sendTypingOn(sender)
-			sendGenericMessageMenu(sender)	//	Image(sender)
+			sendGenericMessageMenu(sender)	
 
 	}
 }
@@ -228,7 +228,7 @@ function sendGenericMessage(recipientId) {
             title: "rift",
             subtitle: "Next-generation virtual reality",
             item_url: "https://www.oculus.com/en-us/rift/",
-            image_url:  "http://lit-journey-76093.herokuapp.com/oasis.jpg",
+            image_url:  "https://media.gettyimages.com/photos/librarian-looking-up-books-on-computer-for-student-picture-id1200910143?s=2048x2048",
             buttons: [{
               type: "postback",
               title: "Call Postback",
@@ -238,7 +238,7 @@ function sendGenericMessage(recipientId) {
             title: "touch",
             subtitle: "Your Hands, Now in VR",
             item_url: "https://www.oculus.com/en-us/touch/",
-            image_url: "http://lit-journey-76093.herokuapp.com/oasis.jpg",
+            image_url: "https://media.gettyimages.com/photos/librarian-looking-up-books-on-computer-for-student-picture-id1200910143?s=2048x2048https://media.gettyimages.com/photos/librarian-looking-up-books-on-computer-for-student-picture-id1200910143?s=2048x2048",
             buttons: [ {
               type: "postback",
               title: "Call Postback",
@@ -252,6 +252,7 @@ function sendGenericMessage(recipientId) {
 
   callSendAPI(messageData);
 }
+//for dynamic generic template 
 function sendGenericMessageDynamic(recipientId,elmt) {
   var messageData = {
     recipient: {
@@ -322,8 +323,8 @@ function sendGenericMessageMenu(recipientId) {
         payload: {
           template_type: "generic",
           elements: [{
-            title: "Fandaharana",
-            subtitle: "Ireo Fandaharana rehetra",
+            title: "title",
+            subtitle: "subtitle",
             item_url: "https://www.oculus.com/en-us/rift/",
             image_url:  "https://media.gettyimages.com/photos/couple-organize-camping-gear-at-sunrise-picture-id1191744557?s=2048x2048",
             buttons: [{
@@ -332,8 +333,8 @@ function sendGenericMessageMenu(recipientId) {
               payload: "title",
             }]
           }, {
-            title: "Mediasion",
-            subtitle: "Misy ireo vokatry ny tarika",
+            title: "title 2",
+            subtitle: "subtitle 2",
             item_url: "https://www.oculus.com/en-us/touch/",
             image_url: "https://media.gettyimages.com/photos/couple-organize-camping-gear-at-sunrise-picture-id1191744557?s=2048x2048",
             buttons: [ {
@@ -343,8 +344,8 @@ function sendGenericMessageMenu(recipientId) {
             }]
           },
 					{
-						title: "Circulaire",
-						subtitle: "Fandefasana filazan-draharaha",
+						title: "title 3",
+						subtitle: "subtitle 3",
 						item_url: "https://www.oculus.com/en-us/touch/",
 						image_url: "https://media.gettyimages.com/photos/couple-organize-camping-gear-at-sunrise-picture-id1191744557?s=2048x2048",
 						buttons: [ {
@@ -436,6 +437,7 @@ function sendTypingOn(recipientId) {
 
   callSendAPI(messageData);
 }
+//to mark that your bot was seen the user action
 function sendReadReceipt(recipientId) {
   console.log("Sending a read receipt to mark message as seen");
 
